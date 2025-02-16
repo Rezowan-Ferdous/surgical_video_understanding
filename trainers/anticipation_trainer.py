@@ -24,6 +24,7 @@ def train(args, model, train_loader, optimizer, scheduler, criterion,  model_sav
         for i, data in enumerate(train_loader):
             optimizer.zero_grad()
             features, past_label, trans_dur_future, trans_future_target = data
+            print(f"Features Shape: {features.shape}, Past Label Shape: {past_label.shape}")
             features = features.to(device) #[B, S, C]
             past_label = past_label.to(device) #[B, S]
             trans_dur_future = trans_dur_future.to(device)
@@ -40,6 +41,7 @@ def train(args, model, train_loader, optimizer, scheduler, criterion,  model_sav
                 inputs = (gt_features, past_label)
 
             outputs = model(inputs)
+            print(f"Outputs: {outputs}")
             losses = 0
             if args.seg :
                 output_seg = outputs['seg']

@@ -30,7 +30,9 @@ class FUTR(nn.Module):
         nn.init.xavier_uniform_(self.input_embed.weight)
         self.query_embed = nn.Embedding(self.n_query, hidden_dim)
 
-
+        args.seg = True
+        args.anticipate = True
+        args.pos_emb = True
         if args.seg :
             self.fc_seg = nn.Linear(hidden_dim, n_class-1) #except SOS, EOS
             nn.init.xavier_uniform_(self.fc_seg.weight)

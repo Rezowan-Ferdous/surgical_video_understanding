@@ -181,10 +181,12 @@ def main():
             item = train_data[i]
             print(f"Sample {i}: Features Shape: {item['features'].shape}, Past Labels: {item['past_label'].shape}")
         print(f"Dataset size: {len(train_data)}")
-        train(args,model, train_loader, model_save_path, results_save_path, actions_dict, task, dataset, num_classes)
-        train(args, model, train_loader, optimizer, scheduler, criterion,
-                     model_save_path, pad_idx, args.device)
+
+        train(args=args,model=model, train_loader=train_loader, optimizer=optimizer,scheduler=scheduler, criterion=criterion,  model_save_path=model_save_path, pad_idx=pad_idx, device=device )
 
 
 if __name__ == '__main__':
     main()
+
+# export PYTHONPATH="/home/local/data/rezowan/experiments/surgical_video_understanding:$PYTHONPATH"
+# source ~/.bashrc
